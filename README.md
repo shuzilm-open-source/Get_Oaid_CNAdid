@@ -78,6 +78,5 @@ CNAdid 为稳定设备标示，有良好的反作弊对抗特征，详细信息�
 
 
 ## 截图展示
-
-![img](https://github.com/shuzilm-open-source/Get_Oaid_CNAdid/tree/master/images/1.png)    ![img](https://github.com/shuzilm-open-source/Get_Oaid_CNAdid/tree/master/images/2.png)
+![image](https://github.com/shuzilm-open-source/Get_Oaid_CNAdid/blob/master/images/1.png)    ![image](https://github.com/shuzilm-open-source/Get_Oaid_CNAdid/blob/master/images/2.png)
 
