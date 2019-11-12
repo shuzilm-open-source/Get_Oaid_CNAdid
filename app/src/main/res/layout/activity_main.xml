@@ -31,7 +31,30 @@
             android:background="@drawable/bg_btn_select"/>
 
         <TextView
-            android:id="@+id/tv"
+            android:id="@+id/tv_oaid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:text=""
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="获取 CN Adid"
+            android:textColor="#fff"
+            android:onClick="getCNAdid"
+            android:background="@drawable/bg_btn_select"/>
+
+        <TextView
+            android:id="@+id/tv_adid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
