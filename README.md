@@ -61,3 +61,9 @@ OAID 移动安全联盟（该联盟为**中国信息通信研究院**下属**电
 | 三星   | 10月份将支持                          |
 | 努比亚 | 10月份将支持                          |
 
+
+
+## 截图展示
+
+![1](D:\GitLabProjects\open-source\OAID_Tool\images\1.png) ![74BCE1DC-1C0C-4f8a-BE10-CB8AEAB99EC1](D:\GitLabProjects\open-source\OAID_Tool\images\F3B54493-C4C8-4f9e-81BE-90729011B6B5.png)
+
