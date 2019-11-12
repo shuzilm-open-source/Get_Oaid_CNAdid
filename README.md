@@ -1,8 +1,5 @@
 # Get_Oaid_CNAdid
 
-[TOC]
-
-
 
 ## 背景
 
