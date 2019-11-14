@@ -1,8 +1,5 @@
 # Get_Oaid_CNAdid
 
-[TOC]
-
-
 
 ## 背景
 
@@ -36,6 +33,7 @@ OAID 移动安全联盟（该联盟为**中国信息通信研究院**下属**电
 ## 支持功能
 
 OAID 目前提供一下设备的获取方式:
+
 小米、vivo、华为、OPPO、Lenovo、华硕、三星、魅族、努比亚
 
 CNAdid目前提供安卓全平台获取方式。  
@@ -71,7 +69,7 @@ CNAdid目前提供安卓全平台获取方式。
 **匿名设备标识符的开启\关闭受控机制**
 移动智能终端应提供匿名设备标识符的开启\关闭受控机制，用户可以选择在系统设置中关闭匿名 设备标识符；关闭后，应用获取到的匿名设备标识符的返回值为 NO。
 
-**请注意：**OAID 与IMEI 不同，IMEI 为设备标示，对于相同设备在不被篡改时，不发生变化，可以作为画像索引 key。
+**请注意**：OAID 与IMEI 不同，IMEI 为设备标示，对于相同设备在不被篡改时，不发生变化，可以作为画像索引 key。
 OAID 为广告标识，同一台设备在不同时间内，可以拥有不同的的 OAID，因此无法作为稳定的索引key 使用。详细信息参考（[www.msa-alliance.cn）](http://16054554.s21d-16.faiusrd.com/0/ABUIABA9GAAgpKaN6QUoq7em2QI?f=%E5%9B%A2%E4%BD%93%E6%A0%87%E5%87%86-%E7%A7%BB%E5%8A%A8%E6%99%BA%E8%83%BD%E7%BB%88%E7%AB%AF%E8%A1%A5%E5%85%85%E8%AE%BE%E5%A4%87%E6%A0%87%E8%AF%86%E8%A7%84%E8%8C%83-v20190516.pdf&amp;v=1562596132)
 
 CNAdid 为稳定设备标示，有良好的反作弊对抗特征，详细信息参考（[www.cnadid.cn)](http://www.cnadid.cn)  
@@ -79,6 +77,5 @@ CNAdid 为稳定设备标示，有良好的反作弊对抗特征，详细信息�
 
 
 ## 截图展示
-
-![1](D:\GitLabProjects\open-source\OAID_Tool\images\1.png)    ![2](D:\GitLabProjects\open-source\OAID_Tool\images\2.png)
+![image](https://github.com/shuzilm-open-source/Get_Oaid_CNAdid/blob/master/images/1.png)    ![image](https://github.com/shuzilm-open-source/Get_Oaid_CNAdid/blob/master/images/2.png)
 
