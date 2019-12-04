@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements DevicesIDsHelper.
   private String mOAID;
   private DevicesIDsHelper mDevicesIDsHelper;
 
+  private Conetxt mConetxt;
 
   private String[] PERMISSIONS_All_NEED = {
       Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements DevicesIDsHelper.
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
+	mContext = this.getApplicationContext();
     checkAllPermissions(this);
 
     mTvOaid = findViewById(R.id.tv_oaid);
@@ -75,10 +76,9 @@ public class MainActivity extends AppCompatActivity implements DevicesIDsHelper.
         .onDenied(new Action() {
           @Override
           public void onAction(List<String> list) {
-            // 判断用户是否点击了禁止后不再询问
             if (AndPermission.hasAlwaysDeniedPermission(context, PERMISSIONS_All_NEED)) {
-              Toast.makeText(context, "部分功能被禁止，被禁止的功能将无法使用", Toast.LENGTH_SHORT).show();
-              Log.e(TAG, "部分功能被禁止");
+              Toast.makeText(context, "Denied Permission", Toast.LENGTH_SHORT).show();
+              Log.e(TAG, "Denied Permission");
               showNormalDialog(MainActivity.this);
             }
           }
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements DevicesIDsHelper.
    * @param view
    */
   public void getCNAdid(View view) {
-    String cnadid = CNAdidHelper.getInstance().readCNAdid();
+    String cnadid = CNAdidHelper.getInstance().readCNAdid(mContext);
   }
 
 
