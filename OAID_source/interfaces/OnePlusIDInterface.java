@@ -5,16 +5,15 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 
-
 /****************************
- * on 2019/10/29
+ * on 2020/2/17
  ****************************
  */
-public interface OppoIDInterface extends IInterface {
+public interface OnePlusIDInterface extends IInterface{
 
-  public static abstract class up extends Binder implements OnePlusIDInterface {
+  public static abstract class up extends Binder implements OppoIDInterface {
 
-    public static class down implements OnePlusIDInterface {
+    public static class down implements OppoIDInterface {
       public IBinder iBinder;
 
       public down(IBinder ib) {
@@ -50,16 +49,16 @@ public interface OppoIDInterface extends IInterface {
       }
     }
 
-    public static OppoIDInterface genInterface(IBinder iBinder) {
+    public static OnePlusIDInterface genInterface(IBinder iBinder) {
       if (iBinder == null) {
         return null;
       }
       IInterface iInterface = iBinder.queryLocalInterface("com.heytap.openid.IOpenID");
-      if (iInterface == null || !(iInterface instanceof OppoIDInterface)) {
+      if (iInterface == null || !(iInterface instanceof OnePlusIDInterface)) {
         return new up.down(iBinder);
       }
       else {
-        return (OppoIDInterface) iInterface;
+        return (OnePlusIDInterface) iInterface;
       }
     }
   }

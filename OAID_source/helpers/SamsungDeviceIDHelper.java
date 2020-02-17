@@ -13,8 +13,7 @@ import com.example.oaid_tool.interfaces.SamsungIDInterface;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /****************************
- * Created by lchenglan
- * on 2019/10/29
+ * * on 2019/10/29
  ****************************
  */
 public class SamsungDeviceIDHelper {
@@ -31,7 +30,6 @@ public class SamsungDeviceIDHelper {
       mContext.getPackageManager().getPackageInfo("com.samsung.android.deviceidservice", 0);
     }
     catch (Exception e) {
-      Log.i("Wooo", "intentForID getSumsungID service not found;");
       e.printStackTrace();
     }
 
@@ -43,7 +41,6 @@ public class SamsungDeviceIDHelper {
         IBinder iBinder = linkedBlockingQueue.take();
         SamsungIDInterface.Proxy proxy = new SamsungIDInterface.Proxy(iBinder);       // 在这里有区别，需要实际验证
         String oaid = proxy.getID();
-        Log.i("Wooo", "intentForID getSumsungID oaid -> " + oaid);
         if (_listener != null) {
           _listener.OnIdsAvalid(oaid);
         }

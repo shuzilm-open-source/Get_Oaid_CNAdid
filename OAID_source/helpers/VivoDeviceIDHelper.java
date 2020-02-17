@@ -12,7 +12,6 @@ import android.util.Log;
 import java.lang.reflect.Method;
 
 /****************************
- * Created by lchenglan
  * on 2019/10/29
  ****************************
  */
@@ -40,7 +39,6 @@ public class VivoDeviceIDHelper {
       cursor.close();
     }
     else {
-      Log.i("Wooo", "VivoDeviceIDHelper getContentResolver is faile.");
     }
     return res;
   }
@@ -90,7 +88,6 @@ public class VivoDeviceIDHelper {
 
   private boolean isSupportIds() {
     String isSupId = sysProperty("persist.sys.identifierid.supported", "0");
-    Log.i("Wooo", "VIVO_OpenDeviceIDs isSupportIds issup -> " + isSupId);
     isSupportIds = isSupId.equals("1");
     return isSupportIds;
   }
@@ -106,10 +103,9 @@ public class VivoDeviceIDHelper {
           int tag = msg.getData().getInt("type");
           String name = msg.getData().getString("appid");
           String id = getContentResolver(tag, name);
-          Log.i("Wooo", "VivoDeviceIDHelper getOAID id -> " + id + " , tag -> " + tag + " ,name -> " + name);
         }
         else {
-          Log.i("Wooo", "VivoDeviceIDHelper getOAID is valied.");
+
         }
       }
     };
@@ -140,7 +136,7 @@ public class VivoDeviceIDHelper {
       cursor.close();
     }
     else {
-      Log.i("Wooo", "VivoDeviceIDHelper getContentResolver is faile.");
+
     }
     return result;
   }

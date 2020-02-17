@@ -10,13 +10,14 @@ import android.content.pm.Signature;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.Looper;
+import android.os.SystemClock;
+import android.provider.Settings;
 
 import com.example.oaid_tool.interfaces.OppoIDInterface;
 
 import java.security.MessageDigest;
 
 /****************************
- * Created by lchenglan
  * on 2019/10/29
  ****************************
  */
@@ -42,9 +43,14 @@ public class OppoDeviceIDHelper {
 
     Intent intent = new Intent();
     intent.setComponent(new ComponentName("com.heytap.openid", "com.heytap.openid.IdentifyService"));
-    intent.setAction("android.intent.action.OPEN_ID");
+    intent.setAction("action.com.heytap.openid.OPEN_ID_SERVICE");
 
     if (mContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)) {
+      try {
+        SystemClock.sleep(3000);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
       if (oppoIDInterface != null) {
         String oaid = realoGetIds("OUID");
         String vaid = realoGetIds("DUID");

@@ -12,8 +12,7 @@ import com.example.oaid_tool.interfaces.HWIDInterface;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /****************************
- * Created by lchenglan
- * on 2019/10/29
+ * *  * on 2019/10/29
  * 获取华为 OAID
  ****************************
  */
@@ -27,27 +26,22 @@ public class HWDeviceIDHelper {
   }
 
   public void getHWID(DevicesIDsHelper.AppIdsUpdater _listener) {
-    Log.i("Wooo", "getHWID IN ");
     try {
       mContext.getPackageManager().getPackageInfo("com.huawei.hwid", 0);
     }
     catch (Exception e) {
-      Log.i("Wooo", "getHWID hw service not found;");
       e.printStackTrace();
     }
 
     Intent bindIntent = new Intent("com.uodis.opendevice.OPENIDS_SERVICE");
     bindIntent.setPackage("com.huawei.hwid");
     boolean isBin = mContext.bindService(bindIntent, serviceConnection, Context.BIND_AUTO_CREATE);
-    Log.i("Wooo", "intentForID bindService. isBin -> " + isBin);
     if (isBin) {
       try {
         IBinder iBinder = linkedBlockingQueue.take();
-        Log.i("Wooo", "getHWID bindService. binder -> " + iBinder);
         HWIDInterface.HWID hwID = new HWIDInterface.HWID(iBinder);
         String ids = hwID.getIDs();
         boolean boos = hwID.getBoos();
-        Log.i("Wooo", "getHWID OUT ids -> " + ids + " , boos -> " + boos);
 
         if (_listener != null) {
           _listener.OnIdsAvalid(ids);
@@ -60,7 +54,6 @@ public class HWDeviceIDHelper {
         mContext.unbindService(serviceConnection);
       }
     }
-    Log.i("Wooo", "getHWID OUT isBin -> " + isBin);
   }
 
 

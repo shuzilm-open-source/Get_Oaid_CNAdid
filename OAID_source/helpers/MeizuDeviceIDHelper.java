@@ -2,12 +2,13 @@ package com.example.oaid_tool.helpers;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.ProviderInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
 /****************************
- * Created by lchenglan
  * on 2019/10/29
  ****************************
  */
@@ -20,12 +21,26 @@ public class MeizuDeviceIDHelper {
   }
 
 
+  private boolean isMeizuSupport() {
+    try {
+      PackageManager pm = mContext.getPackageManager();
+      if (pm != null) {
+        ProviderInfo pi = pm.resolveContentProvider("com.meizu.flyme.openidsdk", 0);        // "com.meizu.flyme.openidsdk"
+        if (pi != null) {
+          return true;
+        }
+      }
+    } catch (Exception e) {
+      //ignore
+    }
+    return false;
+  }
+
   public void getMeizuID(DevicesIDsHelper.AppIdsUpdater _listener) {
     try {
       mContext.getPackageManager().getPackageInfo("com.meizu.flyme.openidsdk", 0);
     }
     catch (Exception e) {
-      Log.i("Wooo", "intentForID getMEIZID service not found;");
       e.printStackTrace();
     }
     Uri uri = Uri.parse("content://com.meizu.flyme.openidsdk/");

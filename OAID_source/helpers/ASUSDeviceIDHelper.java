@@ -12,7 +12,6 @@ import com.example.oaid_tool.interfaces.ASUSIDInterface;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /****************************
- * Created by lchenglan
  * on 2019/10/29
  * 华硕手机获取 OAID
  ****************************
@@ -36,7 +35,6 @@ public class ASUSDeviceIDHelper {
       mContext.getPackageManager().getPackageInfo("com.asus.msa.SupplementaryDID", 0);
     }
     catch (Exception e) {
-      Log.i("Wooo", "intentForID asus service not found;");
       e.printStackTrace();
     }
 
@@ -51,7 +49,6 @@ public class ASUSDeviceIDHelper {
         IBinder iBinder = linkedBlockingQueue.take();
         ASUSIDInterface.ASUSID asusID = new ASUSIDInterface.ASUSID(iBinder);
         String asusOAID = asusID.getID();
-        Log.i("Wooo", "intentForID getID ids -> " + asusOAID);
 
         if (_listener != null) {
           _listener.OnIdsAvalid(asusOAID);

@@ -7,7 +7,6 @@ import android.os.Build;
 import android.os.Bundle;
 
 /****************************
- * Created by lchenglan
  * on 2019/10/29
  * 努比亚 OAID
  ****************************

@@ -11,24 +11,23 @@ import android.os.Build;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.provider.Settings;
 
-import com.example.oaid_tool.interfaces.OppoIDInterface;
+import com.example.oaid_tool.interfaces.OnePlusIDInterface;
 
 import java.security.MessageDigest;
 
 /****************************
- * on 2019/10/29
+ * * on 2020/2/17
  ****************************
  */
-public class OppoDeviceIDHelper {
+public class OnePlusDeviceIDHelper {
 
   private Context mContext;
   public String oaid = "OUID";
   private String sign;
-  OppoIDInterface oppoIDInterface;
+  OnePlusIDInterface onePlusIDInterface;
 
-  public OppoDeviceIDHelper(Context ctx) {
+  public OnePlusDeviceIDHelper(Context ctx) {
     mContext = ctx;
   }
 
@@ -46,12 +45,13 @@ public class OppoDeviceIDHelper {
     intent.setAction("action.com.heytap.openid.OPEN_ID_SERVICE");
 
     if (mContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)) {
+
       try {
         SystemClock.sleep(3000);
       } catch (Exception e) {
         e.printStackTrace();
       }
-      if (oppoIDInterface != null) {
+      if (onePlusIDInterface != null) {
         String oaid = realoGetIds("OUID");
         String vaid = realoGetIds("DUID");
         String aaid = realoGetIds("AUID");
@@ -100,19 +100,19 @@ public class OppoDeviceIDHelper {
       sign = str2;
     }
 
-    res = ((OppoIDInterface.up.down) oppoIDInterface).getSerID(pkgName, sign, str);
+    res = ((OnePlusIDInterface.up.down) onePlusIDInterface).getSerID(pkgName, sign, str);
     return res;
   }
 
   ServiceConnection serviceConnection = new ServiceConnection() {
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
-      oppoIDInterface = OppoIDInterface.up.genInterface(service);
+      onePlusIDInterface = OnePlusIDInterface.up.genInterface(service);
     }
 
     @Override
     public void onServiceDisconnected(ComponentName name) {
-      oppoIDInterface = null;
+      onePlusIDInterface = null;
     }
   };
 

@@ -7,8 +7,7 @@ import android.os.Parcel;
 
 
 /****************************
- * Created by lchenglan
- * on 2019/10/29
+ * * on 2019/10/29
  ****************************
  */
 public interface SamsungIDInterface extends IInterface {

@@ -10,7 +10,6 @@ import android.util.Log;
 import com.example.oaid_tool.interfaces.LenovoIDInterface;
 
 /****************************
- * Created by lchenglan
  * on 2019/10/29
  * 获取联想 OAID
  ****************************
@@ -25,7 +24,6 @@ public class LenovoDeviceIDHelper {
   }
 
   public void getIdRun(DevicesIDsHelper.AppIdsUpdater _listener) {
-    Log.e("LenovoDeviceIDHelper","getIdRun");
     String result = null;
     String pkgName = mContext.getPackageName();
     Intent intent = new Intent();

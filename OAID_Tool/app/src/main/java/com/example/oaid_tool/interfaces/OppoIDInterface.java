@@ -7,15 +7,14 @@ import android.os.Parcel;
 
 
 /****************************
- * Created by lchenglan
  * on 2019/10/29
  ****************************
  */
 public interface OppoIDInterface extends IInterface {
 
-  public static abstract class up extends Binder implements OppoIDInterface {
+  public static abstract class up extends Binder implements OnePlusIDInterface {
 
-    public static class down implements OppoIDInterface {
+    public static class down implements OnePlusIDInterface {
       public IBinder iBinder;
 
       public down(IBinder ib) {
