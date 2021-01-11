@@ -14,80 +14,80 @@ import android.util.Log;
  */
 public class MeizuDeviceIDHelper {
 
-  private Context mContext;
+    private Context mContext;
 
-  public MeizuDeviceIDHelper(Context ctx) {
-    mContext = ctx;
-  }
+    public MeizuDeviceIDHelper(Context ctx) {
+        mContext = ctx;
+    }
 
 
-  private boolean isMeizuSupport() {
-    try {
-      PackageManager pm = mContext.getPackageManager();
-      if (pm != null) {
-        ProviderInfo pi = pm.resolveContentProvider("com.meizu.flyme.openidsdk", 0);        // "com.meizu.flyme.openidsdk"
-        if (pi != null) {
-          return true;
+    public boolean isMeizuSupport() {
+        try {
+            PackageManager pm = mContext.getPackageManager();
+            if (pm != null) {
+                ProviderInfo pi = pm.resolveContentProvider("com.meizu.flyme.openidsdk", 0);        // "com.meizu.flyme.openidsdk"
+                if (pi != null) {
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-      }
-    } catch (Exception e) {
-      //ignore
+        return false;
     }
-    return false;
-  }
 
-  public void getMeizuID(DevicesIDsHelper.AppIdsUpdater _listener) {
-    try {
-      mContext.getPackageManager().getPackageInfo("com.meizu.flyme.openidsdk", 0);
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
-    Uri uri = Uri.parse("content://com.meizu.flyme.openidsdk/");
+    public void getMeizuID(DevicesIDsHelper.AppIdsUpdater _listener) {
+        try {
+            mContext.getPackageManager().getPackageInfo("com.meizu.flyme.openidsdk", 0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Uri uri = Uri.parse("content://com.meizu.flyme.openidsdk/");
+        Cursor cursor;
+        ContentResolver contentResolver = mContext.getContentResolver();
+        try {
+            cursor = contentResolver.query(uri, null, null, new String[]{"oaid"}, null);
+            String oaid = getOaid(cursor);
+            boolean support = isMeizuSupport();
 
-    Cursor cursor;
-    ContentResolver contentResolver = mContext.getContentResolver();
-    try {
-      cursor = contentResolver.query(uri, null, null, new String[]{"oaid"}, null);
-      String oaid = getOaid(cursor);
 
-      if (_listener != null) {
-        _listener.OnIdsAvalid(oaid);
-      }
-      cursor.close();
+            if (_listener != null) {
+                _listener.OnIdsAvalid(oaid, support);
+            }
+            cursor.close();
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
     }
-    catch (Throwable t) {
-      t.printStackTrace();
-    }
-  }
 
-  /**
-   * 获取 OAID
-   *
-   * @param cursor
-   * @return
-   */
-  private String getOaid(Cursor cursor) {
-    String oaid = null;
-    if (cursor == null) {
-      return null;
+    /**
+     * 获取 OAID
+     *
+     * @param cursor
+     * @return
+     */
+    private String getOaid(Cursor cursor) {
+        String oaid = null;
+        if (cursor == null || cursor.isClosed()) {
+            Log.d("MEIZU :", "oaid null");
+            return null;
+        }
+
+
+        cursor.moveToFirst();
+        int valueIdx = cursor.getColumnIndex("value");
+        if (valueIdx > 0) {
+            oaid = cursor.getString(valueIdx);
+        }
+        valueIdx = cursor.getColumnIndex("code");
+        if (valueIdx > 0) {
+            int codeID = cursor.getInt(valueIdx);
+        }
+        valueIdx = cursor.getColumnIndex("expired");
+        if (valueIdx > 0) {
+            long timeC = cursor.getLong(valueIdx);
+        }
+
+        return oaid;
     }
-    if (cursor.isClosed()) {
-      return null;
-    }
-    cursor.moveToFirst();
-    int valueIdx = cursor.getColumnIndex("value");
-    if (valueIdx > 0) {
-      oaid = cursor.getString(valueIdx);
-    }
-    valueIdx = cursor.getColumnIndex("code");
-    if (valueIdx > 0) {
-      int codeID = cursor.getInt(valueIdx);
-    }
-    valueIdx = cursor.getColumnIndex("expired");
-    if (valueIdx > 0) {
-      long timeC = cursor.getLong(valueIdx);
-    }
-    return oaid;
-  }
 }
