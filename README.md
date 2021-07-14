@@ -29,12 +29,12 @@ OAID 移动安全联盟（该联盟为**中国信息通信研究院**下属**电
 
 
 
-
 ## 支持功能
 
-OAID 目前提供一下设备的获取方式:
+OAID 目前提供以下设备的获取方式：
 
-小米、vivo、华为、OPPO、Lenovo、华硕、三星、魅族、努比亚、一加、ZTE黑鲨、Freeme OS、Ssui OS、Motorola
+> 小米、vivo、华为、OPPO、Lenovo、华硕、三星、魅族、努比亚、一加、ZTE黑鲨、Freeme OS、Ssui OS、Motorola、荣耀、realme、酷赛、酷派 （其中荣耀、realme、酷赛、酷派 厂商获取 OAID 方法目前仅数字联盟可信 ID SDK 支持，如有需求可见 ([数盟官网](https://www.shuzilm.cn/))）
+
 
 CNAdID 目前提供安卓全平台获取方式。  
 
@@ -57,7 +57,10 @@ CNAdID 目前提供安卓全平台获取方式。
 | 一加   | Android 10 版本					     |
 | Freeme OS   | Android 10 版本					     |
 | Ssui OS | Android 10 版本					     |
-
+| 酷塞 | Android 10 版本					     |
+| Realme | colorOS 7					     |
+| 荣耀 | Android 10 版本					     |
+| 酷派 | Android 10 版本					     |
 
 ## 标识特性
 
